@@ -3,46 +3,54 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PhilatelyAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>PhilatelyAI - Professional Suite</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Crect x='25' y='25' width='50' height='50' fill='none' stroke='white' stroke-width='4' stroke-dasharray='4 2'/%3E%3Ccircle cx='65' cy='65' r='15' fill='white' opacity='0.2'/%3E%3Cpath d='M65 55v20M60 65h10' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M30 30h40v40H30z' fill='none' stroke='white' stroke-width='4'/%3E%3Ccircle cx='70' cy='70' r='10' fill='%23fbbf24'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #f8fafc;
+        background-color: #fafafa;
+        -webkit-tap-highlight-color: transparent;
         overflow-x: hidden;
+        overscroll-behavior-y: none; /* Verhindert Pull-to-Refresh Glitches in PWAs */
       }
-      .serif-title {
-        font-family: 'Playfair Display', serif;
-      }
-      
-      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      @keyframes slideInUp { from { transform: translateY(1rem); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-      @keyframes zoomIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-      
-      .animate-in { animation-duration: 500ms; animation-fill-mode: both; }
-      .fade-in { animation-name: fadeIn; }
-      .slide-in-from-bottom-4 { animation-name: slideInUp; }
-      .zoom-in-95 { animation-name: zoomIn; }
-      
-      /* Hide scrollbar for Chrome, Safari and Opera */
       .no-scrollbar::-webkit-scrollbar { display: none; }
-      /* Hide scrollbar for IE, Edge and Firefox */
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .active-scale:active { transform: scale(0.96); }
+      
+      /* Safe Area Paddings für moderne Smartphones */
+      .pb-safe { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
+      .pt-safe { padding-top: env(safe-area-inset-top); }
+
+      /* Sanftere Übergänge für Modals auf Mobilgeräten */
+      .modal-content {
+        max-height: calc(100vh - 2rem);
+        max-height: calc(100svh - 2rem);
+      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
   </body>
